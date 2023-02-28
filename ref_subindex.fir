@@ -17,14 +17,14 @@ circuit Probe :
 
   module Probe :
     input in : UInt<1>[2]
-    output r : Probe<UInt<1>[2]>
+    ; output r : Probe<UInt<1>[2]>
     output out : UInt<1>[2]
     output out_r1 : UInt<1>
     output out_r0_from_r : UInt<1>
 
     inst m of Mid
     m.in <= in
-    forward m.r as r
+    ; forward m.r as r
 
     out <= read(m.r)
     out_r1 <= read(m.r1)
