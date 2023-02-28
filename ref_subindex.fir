@@ -20,6 +20,7 @@ circuit Probe :
     output r : Probe<UInt<1>[2]>
     output out : UInt<1>[2]
     output out_r1 : UInt<1>
+    output out_r0_from_r : UInt<1>
 
     inst m of Mid
     m.in <= in
@@ -27,5 +28,6 @@ circuit Probe :
 
     out <= read(m.r)
     out_r1 <= read(m.r1)
+    out_r0_from_r <= read(m.r[0])
 
 
