@@ -4,5 +4,5 @@ circuit Init :
     output y : Probe<UInt<1>>
 
     export x as y
-    ; export x as y
+    export x as y
 
