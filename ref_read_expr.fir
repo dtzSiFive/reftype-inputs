@@ -18,7 +18,7 @@ circuit Probe :
   module Probe :
     input in : UInt<1>[2]
     output r : Probe<UInt<1>[2]>
-    output out : UInt<1>[2]
+    output out : UInt<2>
     output out_r1 : UInt<1>
     output out_r0_from_r : UInt<1>
 
@@ -26,8 +26,8 @@ circuit Probe :
     m.in <= in
     forward m.r as r
 
-    out <= add(read(m).r, read(m.r1))
-    out_r1 <= read(m).r1
+    out <= add(read(m.r[0]), read(m.r[1]))
+    out_r1 <= read(m.r1);.r1
     out_r0_from_r <= read(m.r)[0]
 
 
