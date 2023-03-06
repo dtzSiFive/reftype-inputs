@@ -3,5 +3,5 @@ circuit Probe :
     input in : UInt<1>
     output r : Probe<UInt<1>>
 
-    export probe(in) as r
+    define r = probe(in)
 

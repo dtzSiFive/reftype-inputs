@@ -6,7 +6,7 @@ circuit UseRefsWithSinkFlow :
     input x : UInt
     output y : UInt
     output p : Probe<UInt>
-    export x as p 
+    define p = probe(x)
     y <= read(p)
 
   module UseRefsWithSinkFlow :
@@ -17,12 +17,12 @@ circuit UseRefsWithSinkFlow :
     output p : Probe<UInt<1>>
 
     ; Read output port's reference
-    export x as p
+    define p = probe(x)
     y <= read(p) 
 
     ; Read child instance's input port reference
     inst ic of InChild
-    export x as ic.p
+    define ic.p = probe(x)
     z <= read(ic.p) 
 
     ; Child w/dead output ref port

@@ -4,9 +4,9 @@ extmodule RefExt :
   output bundle : { a : UInt<1> , b : Probe<UInt<1>> }
   output vector : Probe<UInt<1>>[2]
   ; Resolve references
-  ref r = in
-  ref bundle.b = foo.bar
-  ref vector[0] = x.y
-  ref vector[1] = x.y
+  ref r is "in"
+  ref bundle.b is "foo.bar"
+  ref vector[0] is "x.y"
+  ref vector[1] is "x.y"
 
 

@@ -3,7 +3,7 @@ circuit Probe :
     input in : {a : UInt<1>, b : UInt<1>}
     output r : Probe<{a : UInt<1>, b : UInt<1>}>
     ; export probe(in) as r
-    export in as r
+    define r = probe(in)
 
   module Probe :
     input in : {a : UInt<1>, b : UInt<1>}
@@ -12,8 +12,8 @@ circuit Probe :
 
     inst c of Child
     c.in <= in
-    forward c.r.a as r.a
-    forward c.r.b as r.b
+    define r.a = c.r.a
+    define r.b = c.r.b
 
     out <= read(c.r)
 

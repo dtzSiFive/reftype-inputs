@@ -3,12 +3,12 @@ circuit Connect:
 		input in : {a: UInt, pref: Probe<UInt>, flip cref: Probe<UInt>}
 		; ...
 		node n = in.a
-		export probe(n) as in.cref
+    define in.cref = probe(n)
 
 	module Producer:
 		output out : {a: UInt, pref: Probe<UInt>, flip cref: Probe<UInt>}
 		wire x : UInt
-		export probe(x) as out.pref
+    define out.pref = probe(x)
 		; ...
 		out.a <= x
 
@@ -20,12 +20,12 @@ circuit Connect:
 
 		; A => B
 		a.in.a <= b.out.a
-		forward b.out.pref as a.in.pref
-		forward a.in.cref as b.out.cref
+		define a.in.pref = b.out.pref
+		define b.out.cref = a.in.cref
 
 		; Send references out
-		forward b.out.pref as out.pref
-		forward a.in.cref as out.cref
+		define out.pref = b.out.pref
+		define out.cref = a.in.cref
 
 	module Top:
 		inst c of Connect
