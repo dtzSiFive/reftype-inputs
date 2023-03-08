@@ -11,7 +11,6 @@ circuit Probe :
 
     inst c of Child
     c.in <= in
-    forward c.r as r
     define r = c.r
     define r1 = c.r[1]
 
