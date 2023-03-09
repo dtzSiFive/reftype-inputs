@@ -14,11 +14,9 @@ circuit Probe :
     c.in <= in
 
     ; BADNESS
-    ; forward c.r[0] as r[0]
-    ; forward c.r[0] as r[1]
-
+    ; DISALLOW WRITING /into/ a sub-reference!
     define r[0] = c.r[0]
-    define r[0] = c.r[1]
+    define r[1] = c.r[0]
 
     out <= read(c.r)
     out_r0_from_r <= read(c.r[0])
