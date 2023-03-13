@@ -1,0 +1,16 @@
+circuit WhenCForce :
+  module RefMe :
+    output p : RWProbe<UInt<4>>
+    wire x : UInt<4>
+    define p = rwprobe(x)
+
+  module WhenCForce :
+    input c : UInt<1>
+    input x : UInt<4>
+
+    
+; SPEC EXAMPLE:
+;   when c : force_initial(ref, x)
+; END SPEC EXAMPLE
+   inst r of RefMe
+   when c : force_initial(r.p, x)
