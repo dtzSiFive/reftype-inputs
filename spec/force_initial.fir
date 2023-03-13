@@ -19,8 +19,8 @@ circuit ForceAndRelease:
     output sum : UInt<3>
 
     node x = UInt<2>(0)
-    node y : UInt<2>(0)
-    node z : UInt<2>(0)
+    node y = UInt<2>(0)
+    node z = UInt<2>(0)
     sum <= add(x, add(y, z))
 
     define a = rwprobe(x)
