@@ -4,7 +4,7 @@ module {
     }
     firrtl.module private @OutChild(in %x: !firrtl.uint, out %y: !firrtl.uint, out %p: !firrtl.ref<uint>) {
       %0 = firrtl.ref.send %x : !firrtl.uint
-      firrtl.ref.define %p, %0 : !firrtl.ref<uint>
+      firrtl.ref.define %p, %0 : !firrtl.ref<uint>, !firrtl.ref<uint>
       %1 = firrtl.ref.resolve %p : !firrtl.ref<uint>
       firrtl.connect %y, %1 : !firrtl.uint, !firrtl.uint
     }
