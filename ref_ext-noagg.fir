@@ -1,4 +1,11 @@
-circuit RefExt :
+circuit UseRefExt :
+  module UseRefExt :
+    input in : UInt<1>
+    output out : UInt
+
+    inst e of RefExt
+    e.in <= in
+    out <= read(e.r)
 
   extmodule RefExt :
     input in : UInt<1>
