@@ -20,6 +20,8 @@ circuit Top:
     output r2 : Probe<UInt<4>>
     output out : UInt
 
+    ; In ud1, this is UpDown.n1, in ud2 this is UpDown.n2 .
+    ; However, this is not supported as it cannot be both at once.
     out <= read(in_ref)
     node n1 = and(in, UInt<4>(1))
     node n2 = and(in, UInt<4>(3))
