@@ -14,6 +14,8 @@ circuit UseRefExt :
     ; output vector : Probe<UInt<1>>[2]
     ; Resolve references
     ref r is "in"
+    ; ref r is "out" ; duplicate
+    ; ref r2 is "in" ; unused
     ;ref bundle.b is "foo.bar"
     ;ref vector[0] is "x.y"
     ;ref vector[1] is "x.y"
