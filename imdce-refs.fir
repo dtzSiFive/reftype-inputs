@@ -1,15 +1,6 @@
-; Inliner
+; IMDCE
 
-circuit InlinerRefs : %[[
-  {
-    "class": "firrtl.passes.InlineAnnotation",
-    "target": "~InlinerRefs|ChildIn"
-  },
-  {
-    "class": "firrtl.passes.InlineAnnotation",
-    "target": "~InlinerRefs|ChildOut"
-  }
-]]
+circuit InlinerRefs :
   module ChildIn :
     input in : Probe<UInt<1>>
   module ChildOut :
@@ -28,3 +19,4 @@ circuit InlinerRefs : %[[
     define ci.in = co.out.a
 
     
+
