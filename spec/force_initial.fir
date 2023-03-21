@@ -5,10 +5,10 @@ circuit ForceAndRelease:
     inst r of AddRefs
     o <= r.sum
   
-    force_initial(r.a, UInt<3>(0))
-    force_initial(r.a, UInt<3>(1))
-    force_initial(r.b, UInt<3>(2))
-    force_initial(r.c, UInt<3>(3))
+    force_initial(r.a, UInt<2>(0))
+    force_initial(r.a, UInt<2>(1))
+    force_initial(r.b, UInt<2>(2))
+    force_initial(r.c, UInt<2>(3))
     release_initial(r.c)
   
   ; include "force_addrefs.fir"
