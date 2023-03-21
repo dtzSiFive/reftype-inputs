@@ -8,8 +8,8 @@ circuit ForceAndRelease:
     inst r of AddRefs
     o <= r.sum
 
-    force(clock, c, r.a, a)
-    release(clock, not(c), r.a)
+    force(clock, cond, r.a, a)
+    release(clock, not(cond), r.a)
   
   ; include "force_addrefs.fir"
   module AddRefs:
