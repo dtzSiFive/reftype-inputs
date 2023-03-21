@@ -14,5 +14,5 @@ module RefBouncing:
   define u1.in = probe(n)
   define u2.in = u1.out
 
-  out <= read(u2.out) ; = x
+  y <= read(u2.out) ; = x
 
