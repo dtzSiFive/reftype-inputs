@@ -12,7 +12,7 @@ circuit Top :
     val.b <= UInt<2>(2)
 
     ; Force takes a RWProbe and overrides the target with 'val'.
-    force(d.xp, val)
+    force_initial(d.xp, val)
 
   module DUT :
     input x : {a: UInt, flip b: UInt}
