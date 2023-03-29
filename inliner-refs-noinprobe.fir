@@ -18,5 +18,6 @@ circuit InlinerRefs : %[[
 
     inst co of ChildOut
     co.in <= in
+    out is invalid
     when in.a:
       out <= read(co.out.a)
