@@ -2,6 +2,7 @@ circuit WhenCForce :
   module RefMe :
     output p : RWProbe<UInt<4>>
     wire x : UInt<4>
+    x <= UInt(0)
     define p = rwprobe(x)
 
   module WhenCForce :
