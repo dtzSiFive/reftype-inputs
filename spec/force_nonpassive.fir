@@ -1,7 +1,7 @@
 circuit Top :
   module Top:
-    input x : {a: UInt, flip b: UInt}
-    output y : {a: UInt, flip b: UInt}
+    input x : {a: UInt<2>, flip b: UInt<2>}
+    output y : {a: UInt<2>, flip b: UInt<2>}
 
     inst d of DUT
     d.x <= x
@@ -15,12 +15,12 @@ circuit Top :
     force_initial(d.xp, val)
 
   module DUT :
-    input x : {a: UInt, flip b: UInt}
-    output y : {a: UInt, flip b: UInt}
-    output xp : RWProbe<{a: UInt, b: UInt}>
+    input x : {a: UInt<2>, flip b: UInt<2>}
+    output y : {a: UInt<2>, flip b: UInt<2>}
+    output xp : RWProbe<{a: UInt<2>, b: UInt<2>}>
 
     ; Force drives p.a, p.b, y.a, and x.b, but not y.b and x.a
-    wire p : {a: UInt, flip b: UInt}
+    wire p : {a: UInt<2>, flip b: UInt<2>}
     define xp = rwprobe(p)
     p <= x
     y <= p
