@@ -5,6 +5,7 @@ circuit RWProbeChain:
     output n_rw : RWProbe<UInt<4>>
     output w_rw : RWProbe<UInt>
     output r_rw : RWProbe<UInt>
+    output out : UInt
 
     node n = in
   
@@ -17,15 +18,19 @@ circuit RWProbeChain:
     define n_rw = rwprobe(n)
     define w_rw = rwprobe(w)
     define r_rw = rwprobe(r)
+    
+    out <= r
 
   module RWProbeChain:
      input in : UInt<4>
      input clk : Clock
      input pred : UInt<1>
+     output out : UInt
 
      inst c of Child
      c.in <= in
      c.clk <= clk
+     out <= c.out
 
      force(clk, pred, c.n_rw, and(in,UInt<4>(1)))
      force(clk, pred, c.w_rw, or(in,UInt(1)))
