@@ -32,6 +32,9 @@ circuit RWProbeChain:
      c.clk <= clk
      out <= c.out
 
-     force(clk, pred, c.n_rw, and(in,UInt<4>(1)))
-     force(clk, pred, c.w_rw, or(in,UInt(1)))
-     force(clk, pred, c.r_rw, xor(in,UInt(1)))
+     force_initial(c.n_rw, and(in,UInt<4>(1)))
+     when pred:
+       force(clk, pred, c.r_rw, xor(in, UInt(2)))
+     else:
+       force(clk, UInt<1>(1), c.w_rw, and(in,UInt(1)))
+
