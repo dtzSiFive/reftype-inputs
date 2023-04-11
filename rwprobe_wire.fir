@@ -2,7 +2,9 @@ circuit RWProbeWire: %[[
  { "class": "firrtl.transforms.DontTouchAnnotation",
    "target": "~RWProbeWire|Producer>out" },
  { "class": "firrtl.transforms.DontTouchAnnotation",
-   "target": "~RWProbeWire|Producer>n" }
+   "target": "~RWProbeWire|Producer>n" },
+ { "class": "firrtl.transforms.DontTouchAnnotation",
+   "target": "~RWProbeWire|Producer>foo" }
 ]]
   extmodule Consumer:
     input in : UInt<5>
@@ -14,9 +16,11 @@ circuit RWProbeWire: %[[
     
     ; Simple constant output.
     node n = UInt<5>(1)
-    out <= n
+    wire foo : UInt<5>
+    foo <= n
+    out <= foo
 
-    assert(clock, neq(out, UInt<5>(3)), UInt<1>(1), "out was changed")
+    assert(clock, neq(foo, UInt<5>(3)), UInt<1>(1), "out was changed")
 
   module RWProbeWire:
     input clock: Clock
