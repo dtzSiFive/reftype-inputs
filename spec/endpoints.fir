@@ -13,10 +13,10 @@ circuit Top :
     out.a <= x
   
   module Connect:
-    output out : {x: Probe<UInt>, y: Probe<UInt>}
+    output out : {pref: Probe<UInt>, cref: Probe<UInt>}
   
-    inst a of A
-    inst b of B
+    inst a of Consumer
+    inst b of Producer
   
     ; A => B
     a.in.a <= b.out.a
@@ -30,6 +30,6 @@ circuit Top :
   module Top:
     inst c of Connect
   
-    node producer_debug = read(c.pref); ; Producer-side signal
-    node consumer_debug = read(c.cref); ; Consumer-side signal
+    node producer_debug = read(c.out.pref); ; Producer-side signal
+    node consumer_debug = read(c.out.cref); ; Consumer-side signal
   
