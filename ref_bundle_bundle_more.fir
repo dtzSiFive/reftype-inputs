@@ -1,3 +1,4 @@
+; More testing aggs w/refs.  TODO: flips.
 circuit Bundle :
   module Child :
     input in : {a : UInt<1>, b : UInt<1>[2]}
