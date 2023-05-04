@@ -9,6 +9,7 @@ circuit Bundle :
     input in : {a : UInt<1>, b : UInt<1>[2]}
     output r : {a : Probe<{a : UInt<1>, b : UInt<1>[2]}>, b : Probe<{a : UInt<1>, b : UInt<1>[2]}>} ; bundle of probes of bundles (of UInt, vec)
     output mixed : {a : UInt<1>, x : {p: Probe<{a : UInt<1>, b : UInt<1>[2]}>, data: UInt<1>}[2], b : UInt<1>[2]} ; mixed
+    output nohw : {x : {p: Probe<{a : UInt<1>, b : UInt<1>[2]}>}[2]} ; non-hw-only
 
     inst c1 of Child
     inst c2 of Child
@@ -24,6 +25,8 @@ circuit Bundle :
     define mixed.x[1].p = c2.r
     mixed.x[0].data <= read(c1.r.a)
     mixed.x[1].data <= read(c2.r.a)
+    define nohw.x[0].p = c1.r
+    define nohw.x[1].p = c2.r
 
   module Bundle:
     input in : {a : UInt<1>, b : UInt<1>[2]}
@@ -32,6 +35,8 @@ circuit Bundle :
     output out3 : {a : UInt<1>, b : UInt<1>[2]}
     output out4 : {a : UInt<1>, b : UInt<1>[2]}
     output out5 : {a : UInt<1>, b : UInt<1>[2]}
+    output out6 : {a : UInt<1>, b : UInt<1>[2]}
+    output out7 : {a : UInt<1>, b : UInt<1>[2]}
 
     inst p of Probe
     p.in <= in
@@ -41,5 +46,7 @@ circuit Bundle :
    out2 <= read(p.r.b)
    out3 <= read(p.mixed.x[0].p)
    out4 <= read(p.mixed.x[1].p)
-   out5.a <= p.mixed.a
-   out5.b <= p.mixed.b
+   out5 <= read(p.nohw.x[0].p)
+   out6 <= read(p.nohw.x[1].p)
+   out7.a <= p.mixed.a
+   out7.b <= p.mixed.b
