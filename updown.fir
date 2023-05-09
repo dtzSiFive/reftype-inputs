@@ -10,6 +10,7 @@ circuit Top:
     wire x : UInt
     define out.pref = probe(x)
     ; ...
+    x <= UInt(3)
     out.a <= x
 
   module Connect:
@@ -28,8 +29,10 @@ circuit Top:
     define out.cref = a.in.cref
 
   module Top:
+    output pdebug : UInt
+    output cdebug : UInt
+
     inst c of Connect
 
-    node producer_debug = read(c.out.pref);
-    node consumer_debug = read(c.out.cref);
-
+    pdebug <= read(c.out.pref);
+    cdebug <= read(c.out.cref);
