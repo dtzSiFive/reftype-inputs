@@ -5,16 +5,21 @@ circuit eqsubs:
     output a : Probe<{b: {c: UInt<1>}}>
     output b : Probe<{c: UInt<1>}>
     output dummy : Probe<{a: {b: {c: UInt<1>}}}>
+    output out : UInt<1>
     define dummy = probe(data)
+
 
     define a = dummy.a
     define b = dummy.a.b
 
     node n = read(x)
+    out <= n
 
   module eqsubs:
     input d1 : UInt<1>
     input d2 : UInt<1>
+    output out1 : UInt<1>
+    output out2 : UInt<1>
 
     inst f1 of foo
     inst f2 of foo
@@ -23,3 +28,5 @@ circuit eqsubs:
     define f1.x = f1.a.b.c
     define f2.x = f2.b.c
 
+    out1 <= f1.out
+    out2 <= f2.out
