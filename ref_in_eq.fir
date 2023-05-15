@@ -1,4 +1,4 @@
-circuit foo:
+circuit eq:
   module foo:
     input x : Probe<UInt<1>>
     input data : UInt<1>
@@ -8,7 +8,7 @@ circuit foo:
     define b = probe(data)
     node n = read(x)
 
-  module parent:
+  module eq:
     input d1 : UInt<1>
     input d2 : UInt<1>
 
