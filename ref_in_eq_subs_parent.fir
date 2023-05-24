@@ -19,7 +19,7 @@ circuit eqsubs:
     f.data.a.b.c <= d
     define f.x = a.b.c
     define ref = f.ref
-    out <= f.out
+    out <= and(f.out, and(read(f.ref.a.b.c), read(f.ref).a.b.c))
 
   module baz:
     input d : UInt<1>
