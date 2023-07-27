@@ -4,10 +4,9 @@ circuit RWProbeWire: %[[
 ]]
   module Consumer:
     input in : UInt<5>
-    output n_ref : RWProbe<UInt<5>>
+    output in_ref : RWProbe<UInt<5>>
 
-    node n = in
-    define n_ref = rwprobe(n)
+    define in_ref = rwprobe(in)
 
 
   module Producer:
@@ -19,14 +18,12 @@ circuit RWProbeWire: %[[
 
   module RWProbeWire:
     input clock: Clock
+
     inst c of Consumer
     inst p of Producer
 
-    wire w : UInt<5>
-    c.in <= w
-    w <= p.out
-    assert(clock, neq(w, UInt<5>(3)), UInt<1>(1), "out was changed")
+    c.in <= p.out
+    assert(clock, neq(c.in, UInt<5>(3)), UInt<1>(1), "out was changed")
 
-
-   force_initial(c.n_ref, UInt<5>(3))
+   force_initial(c.in_ref, UInt<5>(3))
 
