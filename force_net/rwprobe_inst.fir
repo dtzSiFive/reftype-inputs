@@ -4,10 +4,6 @@ circuit RWProbeWire: %[[
 ]]
   module Consumer:
     input in : UInt<5>
-    output in_ref : RWProbe<UInt<5>>
-
-    define in_ref = rwprobe(in)
-
 
   module Producer:
     input clock: Clock
@@ -28,5 +24,5 @@ circuit RWProbeWire: %[[
     c.in <= p.out
     p.clock <= clock
 
-   force_initial(c.in_ref, UInt<5>(3))
+   force_initial(rwprobe(c.in), UInt<5>(3))
 
