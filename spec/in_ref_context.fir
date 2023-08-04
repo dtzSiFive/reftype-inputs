@@ -1,17 +1,19 @@
+FIRRTL version 3.0.0
+; SPEC EXAMPLE BEGIN
 circuit Top:
   module Top:
     input in : UInt<4>
     output out : UInt
 
     inst ud1 of UpDown
-    ud1.in <= in
+    connect ud1.in, in
     define ud1.in_ref = ud1.r1
 
     inst ud2 of UpDown
-    ud2.in <= in
+    connect ud2.in, in
     define ud2.in_ref = ud2.r2
 
-    out <= add(ud1.out, ud2.out)
+    connect out, add(ud1.out, ud2.out)
 
   module UpDown:
     input in : UInt<4>
@@ -22,8 +24,9 @@ circuit Top:
 
     ; In ud1, this is UpDown.n1, in ud2 this is UpDown.n2 .
     ; However, this is not supported as it cannot be both at once.
-    out <= read(in_ref)
+    connect out, read(in_ref)
     node n1 = and(in, UInt<4>(1))
     node n2 = and(in, UInt<4>(3))
     define r1 = probe(n1)
     define r2 = probe(n2)
+; SPEC EXAMPLE END
