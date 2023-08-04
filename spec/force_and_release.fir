@@ -21,6 +21,7 @@ circuit ForceAndRelease:
     output c : RWProbe<UInt<2>>
     output sum : UInt<3>
 
+    ; XXX: modified, workaround inability create non-const node w/literal initializer.
     wire w : UInt<2>
     w <= UInt<2>(0)
     node x = w
