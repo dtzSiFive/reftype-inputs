@@ -9,7 +9,7 @@ circuit Refs:
 
     p.y <= UInt<3>(0) ; XXX: modified, for init
     define a = probe(p) ; probe is passive
-    node q = UInt<1>(0)
+    node q = p.x
     define b = rwprobe(q)
     reg r: UInt<1>, clock ; XXX: modified, needs width
     define c = probe(r)

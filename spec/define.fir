@@ -8,8 +8,8 @@ circuit Refs:
   
     wire p : {x: UInt, flip y : UInt}
     define a = probe(p) ; probe is passive
-    node q = UInt<1>(0)
+    node q = p.x
     define b = rwprobe(q)
-    reg r: UInt, clock
+    reg r: UInt<1>, clock
     define c = probe(r)
     define d = probe(clock)
