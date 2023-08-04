@@ -1,4 +1,6 @@
+FIRRTL version 3.0.0
 circuit RefProducer :
+  ; SPEC EXAMPLE BEGIN
   module RefProducer :
     input a : UInt<4>
     input en : UInt<1>
@@ -7,5 +9,6 @@ circuit RefProducer :
   
     when en :
       reg myreg : UInt, clk
-      myreg <= a
+      connect myreg, a
       define thereg = probe(myreg)
+  ; SPEC EXAMPLE END

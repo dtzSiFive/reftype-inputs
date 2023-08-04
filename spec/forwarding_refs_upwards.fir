@@ -1,6 +1,7 @@
 circuit Forward:
-  extmodule Foo :
-    output p : Probe<UInt<3>>
+  ; SPEC EXAMPLE BEGIN
+  extmodule Foo : ; XXX: module -> extmodule
+    output p : Probe<UInt<3>> ; XXX: added width
     ; ...
 
   module Forward :
@@ -8,3 +9,4 @@ circuit Forward:
 
     inst f of Foo
     define p = f.p
+  ; SPEC EXAMPLE END

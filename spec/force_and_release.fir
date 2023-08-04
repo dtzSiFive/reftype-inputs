@@ -1,4 +1,6 @@
+FIRRTL version 3.0.0
 circuit ForceAndRelease:
+  ; SPEC EXAMPLE BEGIN
   module ForceAndRelease:
     input a: UInt<2>
     input clock : Clock
@@ -6,11 +8,12 @@ circuit ForceAndRelease:
     output o : UInt<3>
 
     inst r of AddRefs
-    o <= r.sum
+    connect o, r.sum
 
     force(clock, cond, r.a, a)
     release(clock, not(cond), r.a)
   
+  ; SPEC EXAMPLE END
   ; include "force_addrefs.fir"
   module AddRefs:
     output a : RWProbe<UInt<2>>
