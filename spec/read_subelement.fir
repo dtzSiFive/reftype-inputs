@@ -2,7 +2,7 @@ circuit Foo :
   module Foo :
     output p : Probe<{a: UInt, b: UInt}>
     ; ...
-   wire x : {a: UInt, b: UInt} ; XXX: ADDED
+   wire x : {a: UInt<5>, b: UInt<2>} ; XXX: ADDED
    x is invalid ; XXX: ADDED
    define p = probe(x) ; XXX: ADDED
 
