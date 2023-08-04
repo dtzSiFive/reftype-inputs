@@ -6,7 +6,7 @@ circuit Refs:
     input p : {x: UInt<1>, flip y : UInt<3>} ; XXX: modified, for init
     output a : Probe<{x: UInt, y: UInt}> ; read-only ref. to wire 'p'
     output b : RWProbe<UInt> ; force-able ref. to node 'q', inferred width.
-    output c : Probe<UInt> ; read-only ref. to register 'r', inferred width.
+    output c : Probe<UInt> ; read-only ref. to register 'r', inferred width. ; XXX: modified, needs width
     output d : Probe<Clock> ; ref. to input clock port
 
     p.y <= UInt<3>(0) ; XXX: modified, for init
