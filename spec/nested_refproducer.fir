@@ -6,7 +6,7 @@ circuit RefProducer :
     input en : UInt<1>
     input clk : Clock
     output thereg : Probe<UInt>
-  
+
     when en :
       reg myreg : UInt, clk
       connect myreg, a

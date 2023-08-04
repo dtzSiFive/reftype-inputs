@@ -10,10 +10,10 @@ circuit NoSubAccessesWithProbes :
     output p : Probe<UInt>
 
     inst e of Ext
-  
+
     ; Illegal: e.x[i], e.x[c]
     ; Illegal: e.x[0].a[i], e.x[0].a[c]
-  
+
     ; Legal:
     define p = e.x[0].a[1]
    ; SPEC EXAMPLE END

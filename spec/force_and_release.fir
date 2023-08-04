@@ -12,7 +12,7 @@ circuit ForceAndRelease:
 
     force(clock, cond, r.a, a)
     release(clock, not(cond), r.a)
-  
+
   ; SPEC EXAMPLE END
   ; include "force_addrefs.fir"
   module AddRefs:

@@ -5,6 +5,6 @@ circuit ResetInferGood :
     input in : Reset
     output out : Reset
     output out2 : AsyncReset
-    connect out, read(probe(in))  
+    connect out, read(probe(in))
     connect out2, in
   ; SPEC EXAMPLE END

@@ -11,7 +11,7 @@ circuit WhenCForce :
     input c : UInt<1>
     input x : UInt<4>
 
-    
+
 ; SPEC EXAMPLE:
 ;   when c : force_initial(ref, x)
 ; END SPEC EXAMPLE

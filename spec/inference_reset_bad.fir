@@ -4,5 +4,5 @@ circuit ResetInferBad :
   module ResetInferBad :
     input in : Reset
     output out : AsyncReset
-    connect out, read(probe(in))  
+    connect out, read(probe(in))
   ; SPEC EXAMPLE END
