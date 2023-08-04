@@ -1,8 +1,10 @@
+FIRRTL version 3.0.0
+
 circuit WhenCForce :
   module RefMe :
     output p : RWProbe<UInt<4>>
     wire x : UInt<4>
-    x <= UInt(0)
+    connect x, UInt(0)
     define p = rwprobe(x)
 
   module WhenCForce :
