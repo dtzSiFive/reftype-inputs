@@ -1,3 +1,4 @@
+; NOT SPEC EXAMPLE
 circuit MinimumWidth :
   module Uninferred :
     input x : UInt
