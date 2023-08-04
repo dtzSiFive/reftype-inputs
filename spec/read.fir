@@ -1,14 +1,17 @@
+FIRRTL version 3.0.0
+
 circuit Foo :
-	module Foo :
-		output p : Probe<UInt>
-		; ...
+  ; SPEC EXAMPLE BEGIN
+  module Foo :
+    output p : Probe<UInt>
+    ; ...
    wire x : UInt<4> ; XXX: ADDED
-   x is invalid ; XXX: ADDED
+   invalidate x ; XXX: ADDED
    define p = probe(x) ; XXX: ADDED
 
-	module Bar :
-		output x : UInt
+  module Bar :
+    output x : UInt
 
-		inst f of Foo
-		x <= read(f.p) ; indirectly access the probed data
-
+    inst f of Foo
+    connect x, read(f.p) ; indirectly access the probed data
+  ; SPEC EXAMPLE END
