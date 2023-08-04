@@ -1,4 +1,6 @@
+FIRRTL version 3.0.0
 circuit Refs:
+  ; SPEC EXAMPLE BEGIN
   module Refs:
     input clock:  Clock
     input p : {x: UInt<1>, flip y : UInt<3>} ; XXX: modified, for init
@@ -15,3 +17,4 @@ circuit Refs:
     r <= p.x ; XXX: modified, initialize register
     define c = probe(r)
     define d = probe(clock)
+  ; SPEC EXAMPLE END
