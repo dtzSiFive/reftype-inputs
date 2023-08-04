@@ -5,9 +5,9 @@ circuit Foo :
   module Foo :
     output p : Probe<UInt>
     ; ...
-   wire x : UInt<4> ; XXX: ADDED
-   invalidate x ; XXX: ADDED
-   define p = probe(x) ; XXX: ADDED
+    wire x : UInt<4> ; XXX: ADDED
+    invalidate x ; XXX: ADDED
+    define p = probe(x) ; XXX: ADDED
 
   module Bar :
     output x : UInt
