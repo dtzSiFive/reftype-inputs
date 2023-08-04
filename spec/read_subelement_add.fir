@@ -13,5 +13,5 @@ circuit Foo :
     x <= read(f.p.b) ; indirectly access the probed data
 
     ; SPEC EXAMPLE BEGIN
-    x <= add(read(f.p).a, read(f.p).b)
+    x <= add(read(f.p).a, read(f.p.b))
     ; SPEC EXAMPLE END
