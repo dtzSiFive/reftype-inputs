@@ -1,4 +1,6 @@
+FIRRTL version 3.0.0
 circuit Top :
+  ; SPEC EXAMPLE BEGIN
   module Consumer:
     input in : {a: UInt, pref: Probe<UInt>, flip cref: Probe<UInt>}
     ; ...
@@ -10,7 +12,7 @@ circuit Top :
     wire x : UInt
     define out.pref = probe(x)
     ; ...
-    out.a <= x
+    connect out.a,= x
   
   module Connect:
     output out : {pref: Probe<UInt>, cref: Probe<UInt>}
@@ -19,7 +21,7 @@ circuit Top :
     inst b of Producer
   
     ; A => B
-    a.in.a <= b.out.a
+    connect a.in.a, b.out.a
     define a.in.pref = b.out.pref
     define b.out.cref = a.in.cref
   
@@ -32,4 +34,4 @@ circuit Top :
   
     node producer_debug = read(c.out.pref); ; Producer-side signal
     node consumer_debug = read(c.out.cref); ; Consumer-side signal
-  
+  ; SPEC EXAMPLE END 
