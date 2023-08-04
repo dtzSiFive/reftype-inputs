@@ -7,11 +7,11 @@ module AddRefs:
   output sum : UInt<3>
 
   wire w : UInt<2>
-  w <= UInt<2>(0)
+  connect w, UInt<2>(0)
   node x = w
   node y = w
   node z = w
-  sum <= add(x, add(y, z))
+  connect sum, add(x, add(y, z))
 
   define a = rwprobe(x)
   define b = rwprobe(y)

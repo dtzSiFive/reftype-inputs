@@ -9,12 +9,12 @@ circuit Refs:
     output c : Probe<UInt> ; read-only ref. to register 'r', inferred width. ; XXX: modified, needs width
     output d : Probe<Clock> ; ref. to input clock port
 
-    p.y <= UInt<3>(0) ; XXX: modified, for init
+    connect p.y, UInt<3>(0) ; XXX: modified, for init
     define a = probe(p) ; probe is passive
     node q = p.x ; XXX: modified, workaround inability create non-const node w/literal initializer.
     define b = rwprobe(q)
     reg r: UInt, clock
-    r <= p.x ; XXX: modified, initialize register
+    connect r, p.x ; XXX: modified, initialize register
     define c = probe(r)
     define d = probe(clock)
   ; SPEC EXAMPLE END

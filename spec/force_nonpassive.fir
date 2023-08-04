@@ -1,6 +1,7 @@
 FIRRTL version 3.0.0
 
 circuit Top :
+  ; SPEC EXAMPLE BEGIN
   module Top:
     input x : {a: UInt<2>, flip b: UInt<2>}
     output y : {a: UInt<2>, flip b: UInt<2>}
@@ -26,3 +27,4 @@ circuit Top :
     define xp = rwprobe(p)
     connect p, x
     connect y, p
+  ; SPEC EXAMPLE END

@@ -1,4 +1,6 @@
 ; NOT SPEC EXAMPLE
+FIRRTL version 3.0.0
+
 circuit MinimumWidth :
   module Uninferred :
     input x : UInt
@@ -10,6 +12,6 @@ circuit MinimumWidth :
     output y : UInt
 
     inst u of Uninferred
-    u.x <= x
-    y <= read(u.r)
+    connect u.x, x
+    connect y, read(u.r)
 

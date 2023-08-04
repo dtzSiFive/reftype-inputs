@@ -1,15 +1,19 @@
+FIRRTL version 3.0.0
+
 circuit ForceAndRelease:
+  ; SPEC EXAMPLE BEGIN
   module ForceAndRelease:
     output o : UInt<3>
 
     inst r of AddRefs
-    o <= r.sum
+    connect o, r.sum
 
     force_initial(r.a, UInt<2>(0))
     force_initial(r.a, UInt<2>(1))
     force_initial(r.b, UInt<2>(2))
     force_initial(r.c, UInt<2>(3))
     release_initial(r.c)
+  ; SPEC EXAMPLE END
 
   ; include "force_addrefs.fir"
   module AddRefs:
@@ -20,11 +24,11 @@ circuit ForceAndRelease:
 
     ; XXX: modified, workaround inability create non-const node w/literal initializer.
     wire w : UInt<2>
-    w <= UInt<2>(0)
+    connect w, UInt<2>(0)
     node x = w
     node y = w
     node z = w
-    sum <= add(x, add(y, z))
+    connect sum, add(x, add(y, z))
 
     define a = rwprobe(x)
     define b = rwprobe(y)
