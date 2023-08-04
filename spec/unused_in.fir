@@ -1,4 +1,5 @@
 circuit UnusedInputRef :
+  ; SPEC EXAMPLE BEGIN
   module UnusedInputRef :
     input r : Probe<UInt<1>>
   
@@ -7,4 +8,4 @@ circuit UnusedInputRef :
   
     inst u of UnusedInputRef
     define u.r = probe(in)
-  
+  ; SPEC EXAMPLE END
