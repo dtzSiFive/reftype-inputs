@@ -1,5 +1,7 @@
 FIRRTL version 3.1.0
 
+; Run with -preserve-aggregate=all
+
 circuit RWProbePort: %[[
   {
     "class": "firrtl.passes.InlineAnnotation",
